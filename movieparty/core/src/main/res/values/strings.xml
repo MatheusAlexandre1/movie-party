@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">The Movie DB</string>
+    <string name="home_title">The Movie DB</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="see_all">See All  ></string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="now_playing">Now Playing</string>
+
+    <string name="network_error">Network error! Check your connection</string>
+    <string name="api_general_error">Unexpected error occurred. Try again later.</string>
+    <string name="vote_average">Vote\nAverage</string>
+    <string name="popularity">Popularity</string>
+    <string name="runtime">Runtime</string>
+    <string name="overview">Overview</string>
+    <string name="movie_transition">Movie Transition</string>
+
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="loading">Loading…</string>
+    <string name="movies_loaded">Movies loaded!</string>
+    <string name="movie_saved">Movie added to favorites! :)</string>
+    <string name="movie_removed">Movie removed from favorites! :(</string>
+    <string name="no_results">No results!</string>
+    <string name="in_maintenance">Server in maintenance. Please, try again later.</string>
+    <string name="error_title">Server in maintenance. Please, try again later.</string>
+    <string name="error">Oops! Sorry…</string>
+    <string name="understood">Understood!</string>
+
+    <plurals name="votes">
+        <item quantity="one">%d vote</item>
+        <item quantity="other">%d votes</item>
+    </plurals>
+</resources>

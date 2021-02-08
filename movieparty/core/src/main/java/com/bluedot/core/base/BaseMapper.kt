@@ -1,0 +1,12 @@
+package com.bluedot.core.base
+
+abstract class BaseMapper<T, K> {
+
+    abstract fun transformFrom(source: K): T
+
+    abstract fun transformTo(source: T): K
+
+    fun transformFromList(source: List<K>): List<T> {
+        return source.map { src -> transformFrom(src) }
+    }
+}

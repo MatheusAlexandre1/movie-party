@@ -1,3 +1,4 @@
+include ':features:favorites'
 include ':core'
 include ':app'
 rootProject.name = "movieparty"

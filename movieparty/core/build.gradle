@@ -2,6 +2,14 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
+HashMap<String, String> baseDependencies = rootProject.ext.supportDependencies
+HashMap<String, String> networkDependencies = rootProject.ext.networkDependencies
+HashMap<String, String> diDependencies = rootProject.ext.diDependencies
+HashMap<String, String> testDependencies = rootProject.ext.testDependencies
+HashMap<String, String> databaseDependencies = rootProject.ext.databaseDependencies
+HashMap<String, String> firebaseDependencies = rootProject.ext.firebaseDependencies
+HashMap<String, String> application = rootProject.ext.application
+HashMap<String, String> versions = rootProject.ext.versions
 
 android {
     compileSdkVersion 29
@@ -18,11 +26,20 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+            buildConfigField "String", "BASE_IMAGE_URL", '"https://image.tmdb.org/t/p/w500/"'
+            buildConfigField "String", "API_KEY", '"80b3f05a58b05cf305a2a1adedc7e7f1"'
+        }
         release {
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/"'
+            buildConfigField "String", "BASE_IMAGE_URL", '"https://image.tmdb.org/t/p/w500/"'
+            buildConfigField "String", "API_KEY", '"80b3f05a58b05cf305a2a1adedc7e7f1"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -30,15 +47,26 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 dependencies {
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation baseDependencies.values()
+    implementation networkDependencies.values()
+    implementation helpersDependencies.values()
+    implementation diDependencies.values()
+    implementation asyncDependencies.values()
+    implementation firebaseDependencies.values()
+
+    debugImplementation databaseDependencies.values()
+
+    testImplementation testDependencies.junit,
+            testDependencies.mockk,
+            testDependencies.arch,
+            testDependencies.coroutines_test
+    androidTestImplementation testDependencies.test_junit
+    androidTestImplementation testDependencies.espresso
 }
